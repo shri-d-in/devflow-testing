@@ -89,8 +89,26 @@ def sine(x):
     return math.sin(x)
 
 
+def cosine(x):
+    """Return the cosine of *x* (x in radians).
+
+    Parameters
+    ----------
+    x : numeric
+        Angle in radians.
+
+    Returns
+    -------
+    numeric
+        The cosine of the input value.
+    """
+    log_debug(f"Calculating cosine for input: {x}")
+    return math.cos(x)
+
+
 if __name__ == "__main__":
     print("10 + 5 =", add(10, 5))
     print("10 - 5 =", subtract(10, 5))
     print("3 squared =", square(3))
     print("sin(pi/2) =", sine(math.pi / 2))
+    print("cos(pi/3) =", cosine(math.pi / 3))
