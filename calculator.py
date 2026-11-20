@@ -12,11 +12,9 @@ def log_debug(message):
 def add(a, b):
     return a + b
 
-# keep the comments as it is
 def subtract(a, b):
     return a - b
 
-# New multiply function added
 def multiply(*args):
     """Return the product of all provided numbers.
 
@@ -32,7 +30,8 @@ def multiply(*args):
     for number in args:
         product *= number
     return product
-# New divide function added
+
+
 def divide(a, b):
     """Return the result of dividing a by b.
     If b is zero, returns the string "Error: Division by zero".
@@ -41,7 +40,7 @@ def divide(a, b):
         return "Error: Division by zero"
     return a / b
 
-# New modulo function added
+
 def modulo(a, b):
     """Return the remainder of a divided by b.
     If b is zero, returns the string "Error: Division by zero".
@@ -50,29 +49,48 @@ def modulo(a, b):
         return "Error: Division by zero"
     return a % b
 
-# New power function added
+
 def power(a, b):
-    """Return a raised to the power of b.
-
-
-def subtract(a, b):
-    return a - b
+    """Return a raised to the power of b."""
+    return a ** b
 
 
 def square(a):
     """Return the square of *a*.
 
-    Parameters:
-        a (numeric): The number to be squared.
+    Parameters
+    ----------
+    a : numeric
+        The number to be squared.
 
-    Returns:
-        numeric: The result of *a* multiplied by itself.
+    Returns
+    -------
+    numeric
+        The result of *a* multiplied by itself.
     """
     log_debug(f"Calculating square for input: {a}")
     return a * a
+
+
+def sine(x):
+    """Return the sine of *x* (x in radians).
+
+    Parameters
+    ----------
+    x : numeric
+        Angle in radians.
+
+    Returns
+    -------
+    numeric
+        The sine of the input value.
+    """
+    log_debug(f"Calculating sine for input: {x}")
+    return math.sin(x)
 
 
 if __name__ == "__main__":
     print("10 + 5 =", add(10, 5))
     print("10 - 5 =", subtract(10, 5))
     print("3 squared =", square(3))
+    print("sin(pi/2) =", sine(math.pi / 2))
