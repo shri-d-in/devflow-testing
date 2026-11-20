@@ -1,4 +1,5 @@
 import logging
+import math
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def log_debug(message):
@@ -8,9 +9,11 @@ def log_debug(message):
 # dummy_repo/calculator.py
 def add(a, b):
     return a + b
+
 # keep the comments as it is
 def subtract(a, b):
     return a - b
+
 # New multiply function added
 def multiply(*args):
     """Return the product of all provided numbers.
@@ -35,6 +38,7 @@ def divide(a, b):
     if b == 0:
         return "Error: Division by zero"
     return a / b
+
 # New modulo function added
 def modulo(a, b):
     """Return the remainder of a divided by b.
@@ -43,6 +47,7 @@ def modulo(a, b):
     if b == 0:
         return "Error: Division by zero"
     return a % b
+
 # New power function added
 def power(a, b):
     """Return a raised to the power of b.
