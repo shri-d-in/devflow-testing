@@ -7,6 +7,7 @@ def log_debug(message):
     logging.debug(message)
 
 # dummy_repo/calculator.py
+
 def add(a, b):
     return a + b
 
