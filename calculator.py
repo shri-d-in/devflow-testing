@@ -2,15 +2,6 @@ import logging
 import math
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-def log(message):
-    """Log a message at INFO level."""
-    logging.info(message)
-
-def log_error(message):
-    """Log a message at ERROR level."""
-    logging.error(message)
-
-# New log_debug function added
 def log_debug(message):
     """Log a message at DEBUG level."""
     logging.debug(message)
@@ -24,14 +15,21 @@ def subtract(a, b):
     return a - b
 
 # New multiply function added
-def multiply(a, b, c=None):
-    """Return the product of two or three numbers.
-    If a third argument is provided, multiply all three.
-    """
-    if c is not None:
-        return a * b * c
-    return a * b
+def multiply(*args):
+    """Return the product of all provided numbers.
 
+    Args:
+        *args: A variable number of numeric arguments. At least one argument must be provided.
+
+    Returns:
+        The multiplication result of all arguments.
+    """
+    if not args:
+        raise ValueError("multiply requires at least one argument")
+    product = 1
+    for number in args:
+        product *= number
+    return product
 # New divide function added
 def divide(a, b):
     """Return the result of dividing a by b.
@@ -62,22 +60,43 @@ def power(a, b):
         numeric: The result of a ** b.
     """
     return a ** b
-
 # New sqrt function added
+import math
+
 def sqrt(a):
     """Return the square root of a.
-
-    Parameters:
-        a (numeric): The number to take the square root of.
-
-    Returns:
-        numeric: The square root of a if a is non‑negative.
-        str: An error message if a is negative.
+    If a is negative, logs an error and returns an error string.
     """
     if a < 0:
-        log_error(f"Attempted to take square root of negative number: {a}")
-        return "Error: Negative input"
+        log_debug("Cannot take square root of negative number")
+        return "Error: Cannot take square root of negative number"
     return math.sqrt(a)
+
+def log10(value):
+    """Return the base‑10 logarithm of *value*.
+
+    Parameters:
+        value (numeric): The number to take the log of.
+
+    Returns:
+        float: The base‑10 logarithm of *value*.
+
+    Raises:
+        ValueError: If *value* is not positive.
+    """
+    if value <= 0:
+        raise ValueError("log10 is undefined for non‑positive values")
+    return math.log10(value)
+
+def sine(x):
+    """Return the sine of *x* (x in radians)."""
+    log_debug(f"Calculating sine for input: {x}")
+    return math.sin(x)
+
+def cosine(x):
+    """Return the cosine of *x* (x in radians)."""
+    log_debug(f"Calculating cosine for input: {x}")
+    return math.cos(x)
 
 if __name__ == "__main__":
     print("10 + 5 =", add(10, 5))
@@ -90,3 +109,6 @@ if __name__ == "__main__":
     print("sqrt(9) =", sqrt(9))
     print("sqrt(-4) =", sqrt(-4))
     log_debug("This is a debug message")
+    print("log10(100) =", log10(100))
+    print("sin(pi/2) =", sine(math.pi/2))
+    print("cos(pi) =", cosine(math.pi))
